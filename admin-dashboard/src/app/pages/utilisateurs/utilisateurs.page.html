@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Utilisateurs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Formulaire d’ajout -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Ajouter un utilisateur</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Nom</ion-label>
+        <ion-input [(ngModel)]="newUser.name" placeholder="Nom"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="newUser.email" placeholder="email@example.com"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Rôle</ion-label>
+        <ion-select interface="popover" [(ngModel)]="newUser.role">
+          <ion-select-option value="client">Client</ion-select-option>
+          <ion-select-option value="admin">Admin</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="block" class="ion-margin-top" (click)="addUser()">Ajouter</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Liste des utilisateurs -->
+  <ion-list>
+    <ion-list-header>Liste des utilisateurs</ion-list-header>
+
+    <ng-container *ngFor="let u of users">
+      <!-- Mode édition (changer rôle) -->
+      <ion-item *ngIf="editingUser?.id === u.id; else viewMode">
+        <ion-label position="stacked">Rôle</ion-label>
+        <ion-select interface="popover" [(ngModel)]="editingUser!.role">
+          <ion-select-option value="client">Client</ion-select-option>
+          <ion-select-option value="admin">Admin</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div *ngIf="editingUser?.id === u.id" class="ion-padding-start ion-padding-end ion-margin-bottom">
+        <ion-button size="small" color="success" (click)="saveUser()">Enregistrer</ion-button>
+        <ion-button size="small" color="medium" fill="outline" (click)="cancelEdit()">Annuler</ion-button>
+      </div>
+
+      <!-- Mode lecture -->
+      <ng-template #viewMode>
+        <ion-item>
+          <ion-label>
+            <h2>{{ u.name }}</h2>
+            <p>{{ u.email }}</p>
+            <p>Rôle: {{ u.role === 'admin' ? 'Admin' : 'Client' }}</p>
+          </ion-label>
+        </ion-item>
+        <div class="ion-padding-start ion-padding-end ion-margin-bottom">
+          <ion-button size="small" (click)="startEdit(u)">Modifier</ion-button>
+          <ion-button size="small" color="danger" fill="outline" (click)="deleteUser(u.id)">Supprimer</ion-button>
+        </div>
+      </ng-template>
+    </ng-container>
+  </ion-list>
+</ion-content>

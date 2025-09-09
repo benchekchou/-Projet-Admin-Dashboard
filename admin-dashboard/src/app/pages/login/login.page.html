@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Connexion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Se connecter</ion-card-title>
+      <ion-card-subtitle>Entrez vos identifiants</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form (ngSubmit)="submit()" [formGroup]="form">
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email" formControlName="username" placeholder="email@example.com"></ion-input>
+        </ion-item>
+        <ion-note color="danger" *ngIf="form.controls.username.touched && form.controls.username.invalid">
+          Format d'email invalide
+        </ion-note>
+
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked">Mot de passe</ion-label>
+          <ion-input type="password" formControlName="password" placeholder="••••••"></ion-input>
+        </ion-item>
+        <ion-note color="danger" *ngIf="form.controls.password.touched && form.controls.password.invalid">
+          Mot de passe requis (min 3 caractères)
+        </ion-note>
+
+        <ion-button type="submit" expand="block" class="ion-margin-top" [disabled]="form.invalid">Connexion</ion-button>
+        <ion-text color="danger" *ngIf="error" class="ion-margin-top" style="display:block">{{ error }}</ion-text>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
