@@ -1,0 +1,15 @@
+# Root-level ignore to ensure only specific folders are tracked when pushing to GitHub
+# Ignore everything in the repository by default
+/*
+
+# Allow these files so the repo remains usable
+!.gitignore
+!README.md
+
+# Allow only these two project folders (and all their contents)
+!admin-dashboard/
+!admin-dashboard/**
+!auth/
+!auth/**
+
+# Note: Each subproject has its own .gitignore to handle internal ignores (e.g., node_modules)
