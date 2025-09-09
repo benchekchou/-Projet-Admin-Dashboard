@@ -7,6 +7,7 @@
 !README.md
 
 # Allow only these two project folders (and all their contents)
-
+!admin-dashboard/
+!auth/
 
 # Note: Each subproject has its own .gitignore to handle internal ignores (e.g., node_modules)
