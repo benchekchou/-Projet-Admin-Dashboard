@@ -1,0 +1,17 @@
+{
+  "MENU": {
+    "TITLE": "Admin Menu",
+    "DASHBOARD": "Dashboard",
+    "PRODUCTS": "Products",
+    "USERS": "Users",
+    "LOGOUT": "Logout"
+  },
+  "DASHBOARD": {
+    "TITLE": "Dashboard",
+    "TOTAL_PRODUCTS": "Total Products",
+    "TOTAL_USERS": "Total Users",
+    "GO_PRODUCTS": "Go to Products",
+    "GO_USERS": "Go to Users"
+  }
+}
+

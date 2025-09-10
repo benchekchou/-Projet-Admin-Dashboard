@@ -1,0 +1,17 @@
+{
+  "MENU": {
+    "TITLE": "Menu Admin",
+    "DASHBOARD": "Tableau de bord",
+    "PRODUCTS": "Produits",
+    "USERS": "Utilisateurs",
+    "LOGOUT": "Se déconnecter"
+  },
+  "DASHBOARD": {
+    "TITLE": "Tableau de bord",
+    "TOTAL_PRODUCTS": "Produits Totaux",
+    "TOTAL_USERS": "Utilisateurs Totaux",
+    "GO_PRODUCTS": "Aller aux Produits",
+    "GO_USERS": "Aller aux Utilisateurs"
+  }
+}
+

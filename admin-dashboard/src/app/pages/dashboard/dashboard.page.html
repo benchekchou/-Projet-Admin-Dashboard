@@ -2,8 +2,18 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button auto-hide="true"></ion-menu-button>
+
     </ion-buttons>
-    <ion-title>Tableau de Bord</ion-title>
+    <ion-title>{{ 'DASHBOARD.TITLE' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-toggle slot="end" mode="ios" [(ngModel)]="isDark" (ionChange)="toggleTheme($event)"></ion-toggle>
+    </ion-buttons>
+    <ion-item slot="end" lines="none">
+      <ion-select interface="popover" placeholder="Lang" [(ngModel)]="selectedLang" (ionChange)="onLanguageChange($event)">
+        <ion-select-option value="fr">FR</ion-select-option>
+        <ion-select-option value="en">EN</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -16,9 +26,9 @@
             <ion-card-title>{{ totalProducts }}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            Produits Totaux
+            {{ 'DASHBOARD.TOTAL_PRODUCTS' | translate }}
             <ion-button expand="block" class="ion-margin-top" [routerLink]="['/produits']">
-              Aller aux Produits
+              {{ 'DASHBOARD.GO_PRODUCTS' | translate }}
             </ion-button>
           </ion-card-content>
         </ion-card>
@@ -29,9 +39,9 @@
             <ion-card-title>{{ totalUsers }}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            Utilisateurs Totaux
+            {{ 'DASHBOARD.TOTAL_USERS' | translate }}
             <ion-button expand="block" class="ion-margin-top" [routerLink]="['/utilisateurs']">
-              Aller aux Utilisateurs
+              {{ 'DASHBOARD.GO_USERS' | translate }}
             </ion-button>
           </ion-card-content>
         </ion-card>
